@@ -5,9 +5,11 @@ import random
 
 def main():
     #get the random number
-    random_num = random.randint(1,99)
+    START = 1
+    END = 99
+    random_num = random.randint(START, END)
     #get user guess
-    print("I am thinking of a number between 1 and 99...")
+    print(f"I am thinking of a number between {START} and {END}...")
     guess = get_user_guess()
     guess_Match = False
     while(not guess_Match):
