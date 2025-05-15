@@ -1,5 +1,8 @@
 import tkinter as tk
 
+"""
+Simple program to draw a rectangle on a canvas
+"""
 def main():
     root = tk.Tk()
     canvas = tk.Canvas(root, width=800, height=200)
