@@ -1,5 +1,7 @@
 import tkinter as tk
-
+"""
+Program to create a quilt pattern
+"""
 # each patch is a square with this width and height:
 PATCH_SIZE = 100
 CANVAS_WIDTH = PATCH_SIZE * 4
@@ -38,7 +40,12 @@ def draw_circle_patch(canvas, start_x, start_y):
         fill="salmon"
     )
 
-
+"""
+Function to draw a square - outer purple square and an inner white square
+Requires canvas, start x, start y, end x, end y
+pre: No square at specified coordinates
+post: Square at specified coordinates
+""" 
 def draw_square_patch(canvas, start_x, start_y):
     # draws a purple frame at (start_x, start_y)
     end_x = start_x + PATCH_SIZE
