@@ -28,7 +28,7 @@ print("\nAdd " + str(ADDITIONAL_INPUT_COUNT) + " more topics for selection: ")
 for i in range (ADDITIONAL_INPUT_COUNT):
     addTopic(python_poll)
 
-count_students = input("\nEnter the number of sudents in the class: ")
+count_students = input("\nEnter the number of students in the class: ")
 
 STUDENT_NUM = int(count_students)
 
