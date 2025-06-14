@@ -15,8 +15,21 @@ def main():
     print("The shuffled list: ")
     print(listNums)
 
+    guessList = initializeGuessList()
+    #print initial guessList
+    print(guessList)
+
+    
     #Print the displayedlist
-    displayVisibleList(listNums,[0,0,0,0,0,0])
+    displayVisibleList(listNums,guessList)
+
+def initializeGuessList():
+    guessList = []
+    for i in range(NUM_PAIRS * 2):
+        guessList.append(NUM_PAIRS) ## A value that would not be in the initial items to be guessed
+
+    return guessList  
+
 
 '''
 Function to create a list with pairs of repeating numbers
