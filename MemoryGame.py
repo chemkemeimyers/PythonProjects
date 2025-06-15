@@ -15,6 +15,8 @@ def main():
     print("The shuffled list: ")
     print(listNums)
 
+    print(getTwoValidGuesses())
+
     guessList = initializeGuessList()
     #print initial guessList
     print(guessList)
@@ -23,12 +25,34 @@ def main():
     #Print the displayedlist
     displayVisibleList(listNums,guessList)
 
+'''
+A function to create an initial state of the guess list
+In this specific case, the values of the numbers are 0, 1, 2 repeated twice
+When we initialize a guess list with all 3's, we ensure there is no match
+'''
 def initializeGuessList():
     guessList = []
     for i in range(NUM_PAIRS * 2):
         guessList.append(NUM_PAIRS) ## A value that would not be in the initial items to be guessed
 
     return guessList  
+
+'''
+Function to request 2 valid guesses from the player.
+The function returns a list of 2 valid integer values
+'''
+def getTwoValidGuesses():
+    guessIndexes = []
+    while(len(guessIndexes) < 2):
+        guess = int(input("Enter an index: "))
+
+        if(guess >= 0 and guess < NUM_PAIRS * 2):
+            guessIndexes.append(guess)
+        else:
+            print("Invalid index. Try again.")
+    
+    return guessIndexes
+
 
 
 '''
