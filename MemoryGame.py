@@ -15,15 +15,18 @@ def main():
     print("The shuffled list: ")
     print(listNums)
 
-    print(getTwoValidGuesses())
-
     guessList = initializeGuessList()
+    print(guessList)
+
+    print(get_valid_index(guessList))
+
+    
     #print initial guessList
     print(guessList)
 
     
     #Print the displayedlist
-    displayVisibleList(listNums,guessList)
+    #displayVisibleList(listNums,guessList)
 
 '''
 A function to create an initial state of the guess list
@@ -33,21 +36,72 @@ When we initialize a guess list with all 3's, we ensure there is no match
 def initializeGuessList():
     guessList = []
     for i in range(NUM_PAIRS * 2):
-        guessList.append(NUM_PAIRS) ## A value that would not be in the initial items to be guessed
+        guessList.append('*') ## A value that would not be in the initial items to be guessed
 
     return guessList  
+
+
+'''
+Function to get a valid index guess from the user
+Input: The diplayed list
+Output: Returned index
+'''
+
+def get_valid_index(display_list):
+    valid_index = False
+    valid_guess_index = 99
+
+
+    while(not valid_index):
+        guess_index_is_a_digit = False
+        guess_index_is_in_correct_range = False
+        guess_index_is_a_new_unique_index = False
+        
+        guess_index = input("Enter an index: ")
+
+        if not guess_index.isdigit():
+            print("Not a number. Try again.")
+        else:
+            guess_index = int(guess_index)
+            guess_index_is_a_digit = True
+
+            if(guess_index < 0 or guess_index >= NUM_PAIRS * 2):
+                print("Invalid index. Try again.")
+            else:
+                guess_index_is_in_correct_range = True
+        
+                if(display_list[guess_index] != '*'):
+                    print("This number has already been matched. Try again.")
+                else:
+                    guess_index_is_a_new_unique_index = True
+        
+        if(guess_index_is_a_digit and 
+           guess_index_is_in_correct_range and
+           guess_index_is_a_new_unique_index):
+            valid_guess_index = guess_index
+            valid_index = True
+        
+    return valid_guess_index
+
+
 
 '''
 Function to request 2 valid guesses from the player.
 The function returns a list of 2 valid integer values
 '''
-def getTwoValidGuesses():
+def get_two_valid_indexes(guessList):
     guessIndexes = []
     while(len(guessIndexes) < 2):
         guess = int(input("Enter an index: "))
 
         if(guess >= 0 and guess < NUM_PAIRS * 2):
-            guessIndexes.append(guess)
+            if(guessList[guess] != '*'):
+                if(len(guessIndexes) > 0 and guessIndexes[0] != guess):
+                    guessIndexes.append(guess)
+                else:
+                    print("Invalid index. Try again.")
+            else:
+                print("Invalid index. Try again.")
         else:
             print("Invalid index. Try again.")
     
